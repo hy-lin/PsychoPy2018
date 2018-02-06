@@ -1,0 +1,29 @@
+Install Python 2.7. # I'm unsure if 64 bits works, but I used 32 bits to minimize risk.
+
+"D:\Hsuan-Yu Lin\Documents\Pythons\Python27\Python.exe" -m pip install virtualenv
+"D:\Hsuan-Yu Lin\Documents\Pythons\Python27\Python.exe" -m virtualenv PsychoPy
+
+Activate your virtual enviroment
+PsychoPy\Scripts\activate
+
+install wxPython (under the Lib folder in your venv)
+pip install wxPython
+install pyo (I have no idea where it should go)
+http://ajaxsoundstudio.com/software/pyo/
+install it into
+D:\Hsuan-Yu Lin\Documents\venvs\PsychoPy
+
+download numpy, scipy
+https://www.lfd.uci.edu/%7Egohlke/pythonlibs/
+pip numpy, scipy
+pip install numpy-1.14.0rc1+mkl-cp27-cp27m-win32.whl
+pip install scipy-1.0.0-cp27-cp27m-win32.whl
+
+follow the instruction.
+pip install matplotlib pandas pyopengl pyglet pillow moviepy lxml openpyxl xlrd configobj pyyaml gevent greenlet msgpack-python psutil tables requests[security] pyosf cffi pysoundcard pysoundfile seaborn psychopy_ext python-bidi psychopy
+pip install pyserial pyparallel egi iolabs
+pip install pytest coverage sphinx
+
+pip install pypiwin32
+
+pip install json_tricks
