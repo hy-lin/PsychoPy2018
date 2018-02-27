@@ -19,7 +19,6 @@ serial_position = 3
 probe = stimuli[serial_position-1]  
 
 # let's run it!
-
 trial_index = 1
 print('Beginning trial {}'.format(trial_index))
 # print('Beginning trial', trial_index)
