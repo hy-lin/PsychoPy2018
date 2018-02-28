@@ -1,27 +1,51 @@
 # first and foremost
 'Hello World'
-
-# using python as calculator
-3 * 4
-832 + 382
-12 / 3
-13 % 3
-13 // 3
-1 / 2
+print('Welcome to the classic memory experiment.')
 
 # let python remembering the outcome
-a = 3 * 4
-b = 832 + 382
-c = a + b
-c = c + 3
-c += 3
+setsize = 6 
+display_duration = 500  # in ms.
+display_duration = display_duration / 1000.0  # in s.
 
-s = 'Hello World'
+stimuli = ['bent',
+           'cart',
+           'line',
+           'birth',
+           'ultra',
+           'excuse']
 
-# creating and accessing a list
-d = [a, b, c, s]
-d[2]
-range(3) #help(range)
-e = [a, b, c, d]
-e[3][2]
+probe_type = 'old'
+serial_position = 3
+probe = stimuli[serial_position-1]
 
+# let's run it!
+trial_index = 1
+print('Beginning trial {}, good luck.'.format(trial_index))
+# print('Beginning trial ' + str(trial_index) + ', good luck.')
+
+# print(stimuli[0])
+# print(stimuli[1])
+# print(stimuli[2])
+# print(stimuli[3])
+# print(stimuli[4])
+# print(stimuli[5])
+
+
+for i in range(setsize):
+    print(stimuli[i])
+
+print('*')
+
+print(probe)
+response = raw_input('o/n?')
+
+
+# def setupProbe(stimuli, probe_type, serial_position):
+#     # this function determines the content of the probe
+
+#     if probe_type == 'new':
+#         probe = 'dogs'
+#     else:
+#         probe = stimuli[serial_position - 1]
+
+#     return probe
