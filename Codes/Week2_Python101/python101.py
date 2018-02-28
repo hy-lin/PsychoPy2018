@@ -3,9 +3,9 @@
 print('Welcome to the classic memory experiment.')
 
 # let python remembering the outcome
-setsize = 6
+setsize = 6 
 display_duration = 500  # in ms.
-display_duration = display_duration / 1000  # in s.
+display_duration = display_duration / 1000.0  # in s.
 
 stimuli = ['bent',
            'cart',
@@ -20,8 +20,16 @@ probe = stimuli[serial_position-1]
 
 # let's run it!
 trial_index = 1
-print('Beginning trial {}'.format(trial_index))
-# print('Beginning trial ' + str(trial_index))
+print('Beginning trial {}, good luck.'.format(trial_index))
+# print('Beginning trial ' + str(trial_index) + ', good luck.')
+
+# print(stimuli[0])
+# print(stimuli[1])
+# print(stimuli[2])
+# print(stimuli[3])
+# print(stimuli[4])
+# print(stimuli[5])
+
 
 for i in range(setsize):
     print(stimuli[i])
