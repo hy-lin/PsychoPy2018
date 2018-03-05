@@ -25,7 +25,10 @@ probe = stimuli[serial_position-1]
 
 # let's run it!
 trial_index = 1
-trial_beginning_msg = psychopy.visual.TextStim(window, text = 'Beginning trial {}, good luck.'.format(trial_index))
+trial_beginning_msg = psychopy.visual.TextStim(
+    window,
+    text = 'Beginning trial {}, good luck.'.format(trial_index)
+)
 trial_beginning_msg.draw()
 window.flip()
 
