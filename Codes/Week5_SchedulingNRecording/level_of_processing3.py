@@ -41,7 +41,10 @@ for i in range(setsize):
     window.flip()
     #psychopy.core.wait(display_duration)
 
+    t0 = psychopy.core.getTime()
     response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['o', 'n'])
+    reaction_time = psychopy.core.getTime() - t0
+    psychopy.core.wait(display_duration - reaction_time)
 
     window.flip()
     psychopy.core.wait(ISI)

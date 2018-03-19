@@ -63,5 +63,105 @@ for i in range(setsize):
 response = psychopy.event.waitKeys(keyList = ['o', 'n'])
 ```
 
-- Previously, we used [waitKeys]<http://www.psychopy.org/api/event.html#psychopy.event.waitKeys>.
-- Let's try it.
+- Previously, we used [waitKeys](http://www.psychopy.org/api/event.html#psychopy.event.waitKeys).
+- Let's try it. [level_of_processing.py](https://github.com/hy-lin/PsychoPy2018/blob/master/Codes/Week5_SchedulingNRecording/level_of_processing1.py)
+
+## Level of Processing
+
+- Problems:
+    1. Response isn't accepted during `psychopy.core.wait()` period.
+    2. Participants are able to hold on responding to see the stimulus as long as they want.
+
+- Core issue: The display and recording should run parallel. 
+
+## Level of Processing
+
+- Check [psychopy.event.waitKeys](http://www.psychopy.org/api/event.html#psychopy.event.waitKeys).
+    + maxWait
+
+```{python}
+    stim = psychopy.visual.TextStim(window, text = stimuli[i])
+    stim.draw()
+    window.flip()
+    #psychopy.core.wait(display_duration)
+    
+    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['o', 'n'])
+```
+
+- Didn't solve the problem entirely.
+- Participants can spam response to shortern the stimulus display
+
+## Level of Processing
+
+- Get the reaction time of the response, and add the missing time back after response.
+
+- There are two ways:
+    1. use `timeStamped = True`
+    2. use [psychopy.core.getTime](http://www.psychopy.org/api/core.html#psychopy.core.getTime)
+    
+```{python}
+    t0 = psychopy.core.getTime()
+    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['o', 'n'])
+    reaction_time = psychopy.core.getTime() - t0
+    psychopy.core.wait(display_duration - reaction_time)
+```
+
+- Are we there yet?
+
+## IF
+
+- If participants failed to respond in time, `psychopy.event.waitKeys` returns None instead of actual key press.
+- Keep checking if the response is `None`.
+
+```{python}
+    if response is None:
+        # have to check for more response
+    else:
+        # don't have to check
+```
+
+```{python}
+    if response == 'o':
+        # participant pressed 'o', do something about this
+```
+
+- `is` checks if the variables are referecing to the same object
+- `==` checks if the variables have the same value.
+- `None` is a special case which you HAVE TO check with is.
+
+## IF
+
+- Other logical operation
+
+```{python}
+    response is not None
+    response != 'o'
+    not response == 'o'
+    response == 'o' and response_time < 0.5
+    response is None or response_time < 0.1
+```
+
+- Back to level of processing experiment
+
+# Surprised Exercise
+
+- Now you know everything you need to finish the experiment.
+- DOOOO IIIIIT.
+
+## Level of Processing
+
+```{python}
+    window.flip() # present blank screen regardless
+    
+    if response is None:
+        # participant failed to give the response during the stimulus onset
+        # keep recording the response
+        response = psychopy.event.waitKeys(maxWait = ISI, keyList = ['o', 'n'])
+        
+        reaction_time = psychopy.core.getTime() - t0
+        psychopy.core.wait(ISI - reaction_time - display_duration)
+    else:
+        # participant gave response during stimulus onset
+        # wait patiently
+        psychopy.core.wait(ISI)
+```
