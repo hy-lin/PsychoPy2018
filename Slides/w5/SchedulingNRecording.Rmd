@@ -1,7 +1,7 @@
 ---
 title: "PsychoPy - Scheduling and Recording"
 author: "Hsuan-Yu Lin"
-date: "March 19, 2018"
+date: "March 20, 2018"
 output:
   ioslides_presentation:
     logo: images\logo-large.png
