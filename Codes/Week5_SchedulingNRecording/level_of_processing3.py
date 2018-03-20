@@ -42,7 +42,7 @@ for i in range(setsize):
     #psychopy.core.wait(display_duration)
 
     t0 = psychopy.core.getTime()
-    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['o', 'n'])
+    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['c', 'a'])
     reaction_time = psychopy.core.getTime() - t0
     psychopy.core.wait(display_duration - reaction_time)
 
