@@ -123,8 +123,8 @@ response = psychopy.event.waitKeys(keyList = ['c', 'a'])
 ```
 
 ```{python}
-    if response == 'o':
-        # participant pressed 'o', do something about this
+    if response == 'a':
+        # participant pressed 'a', do something about this
 ```
 
 - `is` checks if the variables are referecing to the same object
