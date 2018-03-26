@@ -10,7 +10,7 @@ window.flip()
 
 # setting up trial
 setsize = 6 
-display_duration = 500  # in ms.
+display_duration = 2000  # in ms.
 ISI = 500 # in ms.
 display_duration = display_duration / 1000.0  # in s.
 ISI = ISI / 1000.0
@@ -41,7 +41,7 @@ for i in range(setsize):
     window.flip()
     #psychopy.core.wait(display_duration)
 
-    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['o', 'n'])
+    response, t1 = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['c', 'a'], timeStamped = True)
 
     window.flip()
     psychopy.core.wait(ISI)

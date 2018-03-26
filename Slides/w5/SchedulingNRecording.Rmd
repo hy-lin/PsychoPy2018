@@ -1,11 +1,12 @@
 ---
 title: "PsychoPy - Scheduling and Recording"
 author: "Hsuan-Yu Lin"
-date: "March 19, 2018"
+date: "March 20, 2018"
 output:
   ioslides_presentation:
-    widescreen: true
     logo: images\logo-large.png
+    widescreen: yes
+  beamer_presentation: default
 ---
 
 ```{r setup, include=FALSE}
@@ -37,11 +38,11 @@ for i in range(setsize):
 
 ## Level of Processing
 
-- Typical long-term memory study by CVraik & Lockhart (1972)
+- Typical long-term memory study by Craik & Lockhart (1972)
 
 
 - Show a long list of words
-- After each word display, participants are asked to `process` the word, e.g., 
+- After each word display, participants are asked to 'process' the word, e.g., 
     + Phonemic
     + Categorical
     + Sentence
@@ -55,16 +56,17 @@ for i in range(setsize):
 ```{r, out.width = "320px", eval = TRUE, echo = FALSE}
   knitr::include_graphics("images/sternberg.png")
 ```
+
 - Add recording after each stimulus display
 
 ## Level of Processing
 
 ```{python}
-response = psychopy.event.waitKeys(keyList = ['o', 'n'])
+response = psychopy.event.waitKeys(keyList = ['c', 'a'])
 ```
 
 - Previously, we used [waitKeys](http://www.psychopy.org/api/event.html#psychopy.event.waitKeys).
-- Let's try it. [level_of_processing.py](https://github.com/hy-lin/PsychoPy2018/blob/master/Codes/Week5_SchedulingNRecording/level_of_processing1.py)
+- Let's try it. [level_of_processing1.py](https://github.com/hy-lin/PsychoPy2018/blob/master/Codes/Week5_SchedulingNRecording/level_of_processing1.py)
 
 ## Level of Processing
 
@@ -85,7 +87,7 @@ response = psychopy.event.waitKeys(keyList = ['o', 'n'])
     window.flip()
     #psychopy.core.wait(display_duration)
     
-    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['o', 'n'])
+    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['c', 'a'])
 ```
 
 - Didn't solve the problem entirely.
@@ -101,7 +103,7 @@ response = psychopy.event.waitKeys(keyList = ['o', 'n'])
     
 ```{python}
     t0 = psychopy.core.getTime()
-    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['o', 'n'])
+    response = psychopy.event.waitKeys(maxWait = display_duration, keyList = ['c', 'a'])
     reaction_time = psychopy.core.getTime() - t0
     psychopy.core.wait(display_duration - reaction_time)
 ```
@@ -121,8 +123,8 @@ response = psychopy.event.waitKeys(keyList = ['o', 'n'])
 ```
 
 ```{python}
-    if response == 'o':
-        # participant pressed 'o', do something about this
+    if response == 'a':
+        # participant pressed 'a', do something about this
 ```
 
 - `is` checks if the variables are referecing to the same object
@@ -135,9 +137,9 @@ response = psychopy.event.waitKeys(keyList = ['o', 'n'])
 
 ```{python}
     response is not None
-    response != 'o'
-    not response == 'o'
-    response == 'o' and response_time < 0.5
+    response != 'c'
+    not response == 'c'
+    response == 'c' and response_time < 0.5
     response is None or response_time < 0.1
 ```
 
@@ -165,3 +167,26 @@ response = psychopy.event.waitKeys(keyList = ['o', 'n'])
         # wait patiently
         psychopy.core.wait(ISI)
 ```
+
+## Level of Processing
+
+- This is not over yet, my summer child.
+    + Everytime, `response` and `reaction_time` are overwritten by new input.
+    + You have to somehow remember the response and rt.
+
+- Create an (or two) array to store the result.
+
+```{python}
+stimuli = ['bent',
+           'cart',
+           'line',
+           'birth',
+           'ultra',
+           'excuse']
+```
+    
+## No longer a surprise exercise
+
+- That's the homework! Store the response and RT somewhere and output them in the end of experiment.
+    + If you are stuck, try to Goole `python how to create an array with n elements`
+    + You can use `print` to output.

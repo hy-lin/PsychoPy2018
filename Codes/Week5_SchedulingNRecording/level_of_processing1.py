@@ -36,13 +36,16 @@ trial_beginning_msg.draw()
 window.flip()
 
 for i in range(setsize):
+    # stimulus onset
     stim = psychopy.visual.TextStim(window, text = stimuli[i])
     stim.draw()
     window.flip()
     psychopy.core.wait(display_duration)
 
-    response = psychopy.event.waitKeys(keyList = ['o', 'n'])
+    # asking input
+    response = psychopy.event.waitKeys(keyList = ['c', 'a'])
 
+    # blank screen
     window.flip()
     psychopy.core.wait(ISI)
 

@@ -1,4 +1,6 @@
 import psychopy.visual
+import psychopy.core
+import psychopy.event
 
 window = psychopy.visual.Window()
 
@@ -6,6 +8,8 @@ window = psychopy.visual.Window()
 hi = psychopy.visual.TextStim(window, text = 'Welcome to the classic memory experiment.')
 hi.draw()
 window.flip()
+
+psychopy.core.wait(1.0)
 
 # setting up trial
 setsize = 6 
@@ -31,16 +35,24 @@ trial_beginning_msg = psychopy.visual.TextStim(
 )
 trial_beginning_msg.draw()
 window.flip()
+psychopy.core.wait(1.0)
 
 for i in range(setsize):
     stim = psychopy.visual.TextStim(window, text = stimuli[i])
     stim.draw()
     window.flip()
+    psychopy.core.wait(display_duration)
 
 eol_msg = psychopy.visual.TextStim(window, text = '*')
 eol_msg.draw()
 window.flip()
+psychopy.core.wait(1.0)
 
-print(probe)
+probe_text = psychopy.visual.TextStim(window, text = probe)
+probe_text.draw()
+window.flip()
 
-response = raw_input('o/n?')
+response = psychopy.event.waitKeys(
+    keyList = ['o', 'n']
+)
+print(response)
