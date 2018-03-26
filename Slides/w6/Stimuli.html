@@ -115,7 +115,7 @@
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Exercise</h2></hgroup><article  id="exercise">
+<slide class=''><hgroup><h2>Exercise</h2></hgroup><article  id="exercise">
 
 <ul>
 <li>Using <a href='https://docs.python.org/2/tutorial/datastructures.html' title=''>list</a> to store the result</li>
@@ -128,7 +128,7 @@ for i in range(setsize):
     result.append(response[0]) #attach the response to the end of the list
     # result.append((response[0], reaction_time)) # appending a tuples</pre>
 
-</article></slide><slide class=""><hgroup><h2>Stimuli</h2></hgroup><article  id="stimuli">
+</article></slide><slide class=''><hgroup><h2>Stimuli</h2></hgroup><article  id="stimuli">
 
 <ul>
 <li>There are many other <a href='http://www.psychopy.org/api/visual.html' title=''>stock stimuli</a> in PsychoPy.</li>
@@ -136,7 +136,7 @@ for i in range(setsize):
 <li><p>However, let&#39;s look at <a href='http://www.psychopy.org/api/visual/window.html#psychopy.visual.Window' title=''>Window</a> first.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Window</h2></hgroup><article  id="window">
+</article></slide><slide class=''><hgroup><h2>Window</h2></hgroup><article  id="window">
 
 <ul>
 <li>Originally, window is setup like this:</li>
@@ -162,7 +162,7 @@ for i in range(setsize):
 <li>See code: open_window.py</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Units</h2></hgroup><article  id="units">
+</article></slide><slide class=''><hgroup><h2>Units</h2></hgroup><article  id="units">
 
 <ul>
 <li><a href='http://www.psychopy.org/general/units.html#units' title=''>Units for the window and stimuli</a></li>
@@ -180,7 +180,7 @@ for i in range(setsize):
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Coordinate System</h2></hgroup><article  id="coordinate-system">
+</article></slide><slide class=''><hgroup><h2>Coordinate System</h2></hgroup><article  id="coordinate-system">
 
 <div class="columns-2">
 Unlike the traditional computer coordinate system:
@@ -199,11 +199,11 @@ PsychoPy uses coordinate system like this:
 
 </center></div>
 
-</article></slide><slide class=""><hgroup><h2>Drawing Empty Frames</h2></hgroup><article  id="drawing-empty-frames">
+</article></slide><slide class=''><hgroup><h2>Drawing Empty Frames</h2></hgroup><article  id="drawing-empty-frames">
 
 <p><img src="data:image/png;base64,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" width="800px" /></p>
 
-</article></slide><slide class=""><hgroup><h2>Drawing Empty Frames</h2></hgroup><article  id="drawing-empty-frames-1">
+</article></slide><slide class=''><hgroup><h2>Drawing Empty Frames</h2></hgroup><article  id="drawing-empty-frames-1">
 
 <ul>
 <li>Drawing one frame</li>
@@ -227,16 +227,52 @@ rect.draw()</pre>
     fillColor = None
 )</pre>
 
-</article></slide><slide class=""><hgroup><h2>Drawing Empty Frames</h2></hgroup><article  id="drawing-empty-frames-2">
+</article></slide><slide class=''><hgroup><h2>Drawing Empty Frames</h2></hgroup><article  id="drawing-empty-frames-2">
 
-<pre class = 'prettyprint lang-python'>frame_pos = [
-    (-0.2, 0.3),
-    (-0.4, 0.0),
-    (-0.2, 0.3),
-    (0.2, -0.3),
-    (0.4, 0.0),
-    (0.2, 0.3)
-]</pre></article></slide>
+<ul>
+<li>Predefine the frame positions.</li>
+<li>Draw multiple frames one by one.</li>
+<li>Rect3.py</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Mouse Clicks</h2></hgroup><article  id="mouse-clicks">
+
+<ul>
+<li><a href='http://www.psychopy.org/api/event.html#psychopy.event.Mouse' title=''>Mouse</a></li>
+<li><a href='http://www.psychopy.org/api/event.html#psychopy.event.Mouse.isPressedIn' title=''>isPressedIn</a></li>
+<li>Rect_Mouse.py</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>ShapeStim</h2></hgroup><article  id="shapestim">
+
+<ul>
+<li>It has a lot of hidden options, e.g.:
+
+<ul>
+<li>Orientate stimulus. See: Rect_Mouse_Orientation.py</li>
+<li>Drawing irregular shape stimulus. See: Colorwheel.py</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Exercise</h2></hgroup><article  id="exercise-1">
+
+<ul>
+<li>6 seqares on the screen.
+
+<ul>
+<li>five of them rotating at the same direction</li>
+<li>one of them rotating at the opposite direction</li>
+</ul></li>
+<li>Participants have to click on the square rotating at the wrong direction</li>
+<li><p>Record RT and correctness.</p></li>
+<li>Bonus points:
+
+<ul>
+<li>Change the orientation speed</li>
+<li>Change the size of the item</li>
+<li>Change the shape from square to rectangle</li>
+</ul></li>
+</ul></article></slide>
 
 
   <slide class="backdrop"></slide>
@@ -248,7 +284,7 @@ rect.draw()</pre>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

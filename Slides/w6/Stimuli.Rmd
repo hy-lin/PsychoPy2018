@@ -121,4 +121,21 @@ rect = psychopy.visual.Rect(
 - [isPressedIn](http://www.psychopy.org/api/event.html#psychopy.event.Mouse.isPressedIn)
 - Rect_Mouse.py
 
-## 
+## ShapeStim
+
+- It has a lot of hidden options, e.g.:
+    - Orientate stimulus. See: Rect_Mouse_Orientation.py
+    - Drawing irregular shape stimulus. See: Colorwheel.py
+    
+## Exercise
+
+- 6 seqares on the screen.
+    - five of them rotating at the same direction
+    - one of them rotating at the opposite direction
+- Participants have to click on the square rotating at the wrong direction
+- Record RT and correctness.
+
+- Bonus points:
+    - Change the orientation speed
+    - Change the size of the item
+    - Change the shape from square to rectangle
