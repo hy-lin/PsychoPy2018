@@ -123,6 +123,8 @@
 
 <pre class = 'prettyprint lang-python'>result = [] # setup an empty list to store the result
 for i in range(setsize):
+    stim = psychopy.visual.TextStim(window, text = stimuli[i])
+    stim.draw()
     ...
     ...
     result.append(response[0]) #attach the response to the end of the list
