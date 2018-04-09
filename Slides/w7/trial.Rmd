@@ -102,4 +102,37 @@ response, correctness, RT = runTrial(3, 1, window, mouse)
 # result = runTrial(3, 1, window, mouse)
 ```
 
-- Have a look at [rotating_squares_func2.py]()
+- Have a look at [rotating_squares_func2.py](https://github.com/hy-lin/PsychoPy2018/blob/master/Codes/Week7_FinishTrial/rotating_squares_func2.py)
+
+## Surprised Exercise
+
+- Is anyone actually surprised anymore?
+- [sternberg.py](https://github.com/hy-lin/PsychoPy2018/blob/master/Codes/Week7_FinishTrial/sternbergs.py)
+- Create a function to run the trial.
+
+## Dictionary
+
+- A more organized data structure
+```{python}
+trial_info = {
+    'setsize': 6,
+    'display_duration': 500/1000.0,
+    'stimuli': [
+        'bent',
+        'cart',
+        'line',
+        'birth',
+        'ultra',
+        'excuse'
+    ],
+    'probe_type': 'old',
+    'serial_position': 3,
+    'probe': 'line'
+}
+
+print(trial_info['probe_type'])
+```
+
+## Homework!
+
+- Nah, expect please sent me your experiment procedure.

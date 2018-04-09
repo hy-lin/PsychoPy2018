@@ -209,7 +209,64 @@ function_name(1, 2)</pre>
     
 ...
 
-runTrial(3, 1, window, mouse)</pre></article></slide>
+runTrial(3, 1, window, mouse)</pre>
+
+<ul>
+<li>The best part of it is, you can add multiple trials with adding minimal number of code.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Function</h2></hgroup><article  id="function-2">
+
+<pre class = 'prettyprint lang-python'>def runTrial(target, normal_orientation, window, mouse):
+    ...
+    return (response, correctness, RT)
+    
+...
+
+response, correctness, RT = runTrial(3, 1, window, mouse)
+# result = runTrial(3, 1, window, mouse)</pre>
+
+<ul>
+<li>Have a look at <a href='https://github.com/hy-lin/PsychoPy2018/blob/master/Codes/Week7_FinishTrial/rotating_squares_func2.py' title=''>rotating_squares_func2.py</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Surprised Exercise</h2></hgroup><article  id="surprised-exercise">
+
+<ul>
+<li>Is anyone actually surprised anymore?</li>
+<li><a href='https://github.com/hy-lin/PsychoPy2018/blob/master/Codes/Week7_FinishTrial/sternbergs.py' title=''>sternberg.py</a></li>
+<li>Create a function to run the trial.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Dictionary</h2></hgroup><article  id="dictionary">
+
+<ul>
+<li>A more organized data structure</li>
+</ul>
+
+<pre class = 'prettyprint lang-python'>trial_info = {
+    &#39;setsize&#39;: 6,
+    &#39;display_duration&#39;: 500/1000.0,
+    &#39;stimuli&#39;: [
+        &#39;bent&#39;,
+        &#39;cart&#39;,
+        &#39;line&#39;,
+        &#39;birth&#39;,
+        &#39;ultra&#39;,
+        &#39;excuse&#39;
+    ],
+    &#39;probe_type&#39;: &#39;old&#39;,
+    &#39;serial_position&#39;: 3,
+    &#39;probe&#39;: &#39;line&#39;
+}
+
+print(trial_info[&#39;probe_type&#39;])</pre>
+
+</article></slide><slide class=""><hgroup><h2>Homework!</h2></hgroup><article  id="homework">
+
+<ul>
+<li>Nah, expect please sent me your experiment procedure.</li>
+</ul></article></slide>
 
 
   <slide class="backdrop"></slide>
