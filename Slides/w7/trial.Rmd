@@ -1,0 +1,105 @@
+---
+title: "Make a Trial"
+author: "Hsuan-Yu Lin"
+date: "April 10, 2018"
+output:
+  ioslides_presentation:
+    widescreen: true
+    logo: images\logo-large.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, python.reticulate = FALSE)
+```
+
+## Exercise
+
+- 6 squares on the screen.
+    - five of them rotating at the same direction
+    - one of them rotating at the opposite direction
+- Participants have to click on the square rotating at the wrong direction
+- Record RT and correctness.
+
+## Exercise
+
+- First is to decide which square to rotate differently.
+```{python}
+target = 3 # third square is the target
+```
+- Then decide which direction is the normal roration and which is the special one.
+```{python}
+normal_orientation = 1
+```
+- Make squares rorate differently.
+```{python}
+    for i in range(6):
+        if i == target-1:
+            rects[i].ori = orientation * normal_orientation * -1
+        else:
+            rects[i].ori = orientation * normal_orientation
+```
+
+## Exercise
+
+- Get mouse click
+```{python}
+        if mouse.isPressedIn(rects[i], buttons = [0]):
+            rects[i].fillColor = (255, 0, 0)
+            response = i+1
+```
+- Check correctness and RT
+```{python}
+correctness = response == target
+RT = psychopy.core.getTime() - t0
+
+print([response, correctness, RT])
+```
+
+## Composing a Trial
+
+- What's the common procedure between trials
+- What's the information required in a trial
+
+- Rotating squares example:
+    - Always 6 squares
+    - Rotation direction varies from trial to trial
+    - Target varies from trial to trial
+    
+## Function
+
+- Let you do things repeatiedly but slightly differently with different input arguement
+```{python}
+def function_name(arg1, arg2, ...):
+    # define a function called function_name.
+    print('in a funtion')
+    
+function_name(1, 2)
+```
+- Importantly, function has it's own space
+- Create a function for runing a trial
+
+## Function
+```{python}
+def runTrial(target, normal_orientation, window, mouse):
+    # define target, normal_orientation, window, mouse as input argument
+    
+...
+
+runTrial(3, 1, window, mouse)
+```
+
+- The best part of it is, you can add multiple trials with adding minimal number of code.
+
+## Function
+```{python}
+def runTrial(target, normal_orientation, window, mouse):
+    ...
+    return (response, correctness, RT)
+    
+...
+
+response, correctness, RT = runTrial(3, 1, window, mouse)
+# result = runTrial(3, 1, window, mouse)
+```
+
+- Have a look at [rotating_squares_func2.py]()

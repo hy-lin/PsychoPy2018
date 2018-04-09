@@ -12,6 +12,11 @@ window = psychopy.visual.Window(
 
 mouse = psychopy.event.Mouse(win = window)
 
+trial_info = {
+    'target': 3,
+    'normal_rotation': 1
+}
+
 frame_pos = [
     (-0.2, 0.3),
     (-0.4, 0.0),
@@ -37,26 +42,31 @@ for i in range(6):
         )
     )
 
-
 orientation = 0
-response = []
+response = None
+t0 = psychopy.core.getTime()
 
-while 'space' not in response:
+while response is None:
     orientation += 1
     if orientation >= 360:
         orientation = 0
 
-    for rect in rects:
-        rect.ori = orientation
-        # rect.fillColor = None
-
-        if mouse.isPressedIn(rect, buttons = [0]):
-            rect.fillColor = (255, 0, 0)
+    for i in range(6):
+        if i == trial_info['target']-1:
+            rects[i].ori = orientation * trial_info['normal_rotation'] * -1
         else:
-            rect.fillColor = (200, 200, 200)
+            rects[i].ori = orientation * trial_info['normal_rotation']
+
+        if mouse.isPressedIn(rects[i], buttons = [0]):
+            rects[i].fillColor = (255, 0, 0)
+            response = i+1
            
-        rect.draw()
+        rects[i].draw()
 
     window.flip()
-    response = psychopy.event.getKeys(keyList = ['space'])
     psychopy.core.wait(0.01667)
+
+correctness = response == trial_info['target']
+RT = psychopy.core.getTime() - t0
+
+print([response, correctness, RT])
