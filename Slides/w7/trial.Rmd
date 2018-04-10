@@ -57,7 +57,7 @@ print([response, correctness, RT])
 
 ## Composing a Trial
 
-- What's the common procedure between trials
+- What's consistant between trials
 - What's the information required in a trial
 
 - Rotating squares example:
