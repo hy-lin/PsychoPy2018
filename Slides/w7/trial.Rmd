@@ -28,15 +28,15 @@ target = 3 # third square is the target
 ```
 - Then decide which direction is the normal roration and which is the special one.
 ```{python}
-normal_orientation = 1
+normal_rotation = 1
 ```
 - Make squares rorate differently.
 ```{python}
     for i in range(6):
         if i == target-1:
-            rects[i].ori = orientation * normal_orientation * -1
+            rects[i].ori = orientation * normal_rotation * -1
         else:
-            rects[i].ori = orientation * normal_orientation
+            rects[i].ori = orientation * normal_rotation
 ```
 
 ## Exercise
