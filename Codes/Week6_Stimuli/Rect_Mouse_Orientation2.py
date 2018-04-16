@@ -40,9 +40,10 @@ for i in range(6):
 
 orientation = 0
 response = []
+FPS = 30.0
 
 while 'space' not in response:
-    orientation += 1
+    orientation += 1 * 30 / FPS
     if orientation >= 360:
         orientation = 0
 
@@ -59,4 +60,4 @@ while 'space' not in response:
 
     window.flip()
     response = psychopy.event.getKeys(keyList = ['space'])
-    psychopy.core.wait(0.01667)
+    psychopy.core.wait(1/FPS)

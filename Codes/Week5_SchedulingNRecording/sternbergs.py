@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import psychopy.visual
 import psychopy.core
 
@@ -15,7 +17,7 @@ ISI = 500 # in ms.
 display_duration = display_duration / 1000.0  # in s.
 ISI = ISI / 1000.0
 
-stimuli = ['bent',
+stimuli = [u'beöt',
            'cart',
            'line',
            'birth',
@@ -23,14 +25,14 @@ stimuli = ['bent',
            'excuse']
 
 probe_type = 'old'
-serial_position = 3
+serial_position = 1
 probe = stimuli[serial_position-1]
 
 # let's run it!
 trial_index = 1
 trial_beginning_msg = psychopy.visual.TextStim(
     window,
-    text = 'Beginning trial {}, good luck.'.format(trial_index)
+    text = u'Beginning trial {}, good luck. beöt'.format(trial_index)
 )
 trial_beginning_msg.draw()
 window.flip()

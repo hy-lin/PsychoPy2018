@@ -1,24 +1,7 @@
 import psychopy.visual
 import psychopy.event
-
-window = psychopy.visual.Window(
-    units = 'height',
-    fullscr=True,
-    color = (200, 200, 200),
-    colorSpace = 'rgb255', 
-    winType = 'pyglet',
-    screen = 0
-)
-
-target = 5
-normal_rotation = -1
-
-mouse = psychopy.event.Mouse(win = window)
-
-# randomization
-
 # running trials
-for i in 1:100:
+def runTrial(target, normal_rotation, mouse, window):
     frame_pos = [
         (-0.2, 0.3),
         (-0.4, 0.0),
@@ -43,7 +26,6 @@ for i in 1:100:
                 pos = frame_pos[i], 
             )
         )
-
 
     orientation = 0
     response = None
@@ -73,4 +55,33 @@ for i in 1:100:
 
     correctness = response == target
 
-    print([response, correctness, RT])
+    # print([response, correctness, RT])
+    return (response, correctness, RT)
+
+window = psychopy.visual.Window(
+    units = 'height',
+    fullscr=True,
+    color = (200, 200, 200),
+    colorSpace = 'rgb255', 
+    winType = 'pyglet',
+    screen = 0
+)
+
+mouse = psychopy.event.Mouse(win = window)
+
+targets = [3, 1, 2, 5, 3]
+rotations = [1, -1, -1, 1, 1]
+
+data = []
+
+for i in range(5):
+    response, correctness, RT = runTrial(targets[i], rotations[i], mouse, window)
+    data.append((targets[i], rotations[i], response, correctness, RT))
+
+    window.flip()
+    psychopy.core.wait(0.5)
+
+    if i == 3:
+        psychopy.core.wait(30)
+
+print(data)
