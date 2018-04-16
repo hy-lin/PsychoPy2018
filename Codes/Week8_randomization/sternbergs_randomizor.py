@@ -63,7 +63,7 @@ trial_info = {
         'cart',
         'line',
         'birth',
-        'mogen',
+        u'mögen',
         'excuse'
     ],
     'probe_type': 'old',

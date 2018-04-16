@@ -307,9 +307,19 @@ word_file.close()</pre>
 
 </article></slide><slide class=""><hgroup><h2>To test</h2></hgroup><article  id="to-test">
 
-<pre >trial_info = getTrialInfo(11, word_list)
+<pre class = 'prettyprint lang-python'>trial_info = getTrialInfo(11, word_list)
 
 runTrial(1, trial_info, window)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Potential problem</h2></hgroup><article  id="potential-problem">
+
+<ul>
+<li>New probe might be the same word as one of the stimuli.</li>
+<li><p>Frequency of words isn&#39;t manipulated.</p></li>
+<li><p>Unable to recreate the trial conditions if things went wrong.</p></li>
+</ul>
+
+<pre class = 'prettyprint lang-python'>numpy.random.seed(12345)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Surprise Exercise</h2></hgroup><article  id="surprise-exercise">
 

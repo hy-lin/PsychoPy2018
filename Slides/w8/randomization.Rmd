@@ -152,6 +152,12 @@ runTrial(1, trial_info, window)
 ## Potential problem
 
 - New probe might be the same word as one of the stimuli.
+- Frequency of words isn't manipulated.
+
+- Unable to recreate the trial conditions if things went wrong.
+```{python}
+numpy.random.seed(12345)
+```
 
 ## Surprise Exercise
 

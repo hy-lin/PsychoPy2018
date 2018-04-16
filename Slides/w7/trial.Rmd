@@ -136,3 +136,15 @@ print(trial_info['probe_type'])
 ## Homework!
 
 - Nah, expect please sent me your experiment procedure.
+
+## Extra bits
+
+- Coding with Unicode 8.
+- At the very first line of the code, declaring the code is coding with unicode 8 with
+```{python}
+# -*- coding: utf-8 -*-
+```
+- Later when assigning the text, enforce the coding as unicode with
+```{python}
+probe = u'mögen'
+```
