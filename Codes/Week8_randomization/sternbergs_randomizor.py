@@ -4,6 +4,16 @@ import psychopy.visual
 import psychopy.core
 import psychopy.event
 
+def getTrialInfo(condition_index):
+    setsizes = [1, 2, 3, 4, 5, 6]
+    probe_types = ['old', 'new']
+    trial_info = {
+        'setsize': setsizes[condition_index // 2],
+        'probe_type': probe_types[condition_index % 2]
+    }
+
+    return trial_info
+
 def runTrial(trial_index, trial_info, window):
     trial_index = 1
     trial_beginning_msg = psychopy.visual.TextStim(

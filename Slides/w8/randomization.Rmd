@@ -1,0 +1,161 @@
+---
+title: "Randomization"
+author: "Hsuan-Yu Lin"
+date: "April 16, 2018"
+output:
+  ioslides_presentation:
+    widescreen: true
+    logo: images\logo-large.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, python.reticulate = FALSE)
+```
+
+## Exercise
+
+- [sternberg.py](https://github.com/hy-lin/PsychoPy2018/blob/master/Codes/Week7_FinishTrial/sternbergs.py)
+- Create a function to run the trial.
+
+## Dictionary
+
+- A more organized data structure
+```{python}
+trial_info = {
+    'setsize': 6,
+    'display_duration': 500/1000.0,
+    'stimuli': [
+        'bent',
+        'cart',
+        'line',
+        'birth',
+        'ultra',
+        'excuse'
+    ],
+    'probe_type': 'old',
+    'serial_position': 3,
+    'probe': 'line'
+}
+
+print(trial_info['probe_type'])
+```
+
+## Randomization
+
+- Getting random numbers from [Numpy](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html)
+
+```{python}
+import numpy.random
+
+numpy.random.randint(0, 100) # random number ranges from 0-99 with uniform distribution
+numpy.random.randn(1) # return one number from normal distribution
+
+trial_conditions = range(10)
+numpy.random.shuffle(trial_conditions)
+```
+
+## Sternbergs.py Randomizor
+
+- Before writing the code, check your design plan.
+- What variable needs to be randomized? and in which way?
+    - setsize: random between 1-6, but the same number of trials for each set size.
+    - probe_type: random between 'old' and 'new', but balanced at difference set sizes.
+    - serial_position: only matters in 'old' probe condition, randomly choose one of the stimuli.
+    - stimuli: randomly picked from a long list of words.
+    - display_duration: fixed.
+    - probe: depending on trial condition; decided by the serial_position if it's 'old' probe; randomly picked from the list if it's 'new' probe.
+    
+## Sternbergs.py Randomizor
+
+- Pick out the variables needed to be balanced.
+- Create a table based on the variables.
+
+| index | Setsize | Probe type | index | Setsize | Probe type |
+|-------|---------|------------|-------|---------|------------|
+|    0  |    1    |   'old'    |    6  |    4    |   'old'    |
+|    1  |    1    |   'new'    |    7  |    4    |   'new'    |
+|    2  |    2    |   'old'    |    8  |    5    |   'old'    |
+|    3  |    2    |   'new'    |    9  |    5    |   'new'    |
+|    4  |    3    |   'old'    |   10  |    6    |   'old'    |
+|    5  |    3    |   'new'    |   11  |    6    |   'new'    |
+
+## Sternbergs.py Randomizor
+
+```{python}
+import numpy
+
+condition_index = numpy.arange(12)
+print(condition_index // 2) # // as division but round down
+print(condition_index % 2)  # % as mod, or remainder
+```
+
+- sternbergs_randomizor.py
+
+```{python}
+def getTrialInfo(condition_index):
+    setsizes = [1, 2, 3, 4, 5, 6]
+    probe_types = ['old', 'new']
+    trial_info = {
+        'setsize': setsizes[condition_index // 2],
+        'probe_type': probe_types[condition_index % 2]
+    }
+    
+    return trial_info
+```
+
+## Sternbergs.py Randomizor
+
+- Decide the remaining variables.
+    - serial_position
+    - stimuli
+    - probe
+
+```{python}
+    trial_info['serial_position'] = numpy.random.randint(trial_info['setsize']) + 1
+
+    trial_info['stimuli'] = numpy.random.choice(
+        word_list,
+        trial_info['setsize'],
+        replace = False
+    )
+
+    if trial_info['probe_type'] == 'old':
+        trial_info['probe'] = trial_info['stimuli'][trial_info['serial_position']-1]
+    else:
+        trial_info['probe'] = numpy.random.choice(word_list, 1)
+```
+
+## Loading text file
+
+- [Read and write files](https://docs.python.org/2/tutorial/inputoutput.html#reading-and-writing-files)
+- However, unicode file need special [treatment.](https://docs.python.org/2/library/codecs.html#codecs.open)
+
+```{python}
+import codecs
+
+word_list = []
+word_file = codecs.open('wordlist.txt', 'r', encoding = 'utf-8')
+for line in word_file:
+    word_list.append(line.rstrip()) # removing '\n' in the end of the line
+    
+word_file.close()
+```
+
+## To test
+
+``` {python}
+trial_info = getTrialInfo(11, word_list)
+
+runTrial(1, trial_info, window)
+```
+
+## Potential problem
+
+- New probe might be the same word as one of the stimuli.
+
+## Surprise Exercise
+
+- "Surprise"
+- Now, we only present one trial.
+- Present multiple trials (48).
+- The conditions of those trials are random but each codition occurs 4 times.
