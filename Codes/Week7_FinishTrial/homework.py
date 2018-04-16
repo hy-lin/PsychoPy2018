@@ -10,7 +10,6 @@ window = psychopy.visual.Window(
     screen = 0
 )
 
-
 target = 3
 normal_rotation = 1
 
@@ -51,6 +50,7 @@ while response is None:
     if orientation >= 360:
         orientation = 0
 
+    # for rect in rects:
     for i in range(6):
         if i == target-1:
             rects[i].ori = orientation * normal_rotation * -1

@@ -140,7 +140,7 @@
 <li>Then decide which direction is the normal roration and which is the special one.</li>
 </ul>
 
-<pre class = 'prettyprint lang-python'>normal_orientation = 1</pre>
+<pre class = 'prettyprint lang-python'>normal_rotation = 1</pre>
 
 <ul>
 <li>Make squares rorate differently.</li>
@@ -148,9 +148,9 @@
 
 <pre class = 'prettyprint lang-python'>    for i in range(6):
         if i == target-1:
-            rects[i].ori = orientation * normal_orientation * -1
+            rects[i].ori = orientation * normal_rotation * -1
         else:
-            rects[i].ori = orientation * normal_orientation</pre>
+            rects[i].ori = orientation * normal_rotation</pre>
 
 </article></slide><slide class=""><hgroup><h2>Exercise</h2></hgroup><article  id="exercise-2">
 
@@ -174,7 +174,7 @@ print([response, correctness, RT])</pre>
 </article></slide><slide class=""><hgroup><h2>Composing a Trial</h2></hgroup><article  id="composing-a-trial">
 
 <ul>
-<li>What&#39;s the common procedure between trials</li>
+<li>What&#39;s consistant between trials</li>
 <li><p>What&#39;s the information required in a trial</p></li>
 <li>Rotating squares example:
 
