@@ -50,6 +50,9 @@ import numpy.random
 numpy.random.randint(0, 100) # random number ranges from 0-99 with uniform distribution
 numpy.random.randn(1) # return one number from normal distribution
 
+numpy.random.randint(0, 100) > 80 # 80% True (1), 20% False (0)
+numpy.random.choice([0, 1], 1, p = [0.2, 0.8]) # same as previous line
+
 trial_conditions = range(10)
 numpy.random.shuffle(trial_conditions)
 ```
@@ -70,14 +73,14 @@ numpy.random.shuffle(trial_conditions)
 - Pick out the variables needed to be balanced.
 - Create a table based on the variables.
 
-| index | Setsize | Probe type | index | Setsize | Probe type |
-|-------|---------|------------|-------|---------|------------|
-|    0  |    1    |   'old'    |    6  |    4    |   'old'    |
-|    1  |    1    |   'new'    |    7  |    4    |   'new'    |
-|    2  |    2    |   'old'    |    8  |    5    |   'old'    |
-|    3  |    2    |   'new'    |    9  |    5    |   'new'    |
-|    4  |    3    |   'old'    |   10  |    6    |   'old'    |
-|    5  |    3    |   'new'    |   11  |    6    |   'new'    |
+| condition index | Setsize | Probe type | condition index | Setsize | Probe type |
+|-----------------|---------|------------|-----------------|---------|------------|
+|              0  |    1    |   'old'    |              6  |    4    |   'old'    |
+|              1  |    1    |   'new'    |              7  |    4    |   'new'    |
+|              2  |    2    |   'old'    |              8  |    5    |   'old'    |
+|              3  |    2    |   'new'    |              9  |    5    |   'new'    |
+|              4  |    3    |   'old'    |             10  |    6    |   'old'    |
+|              5  |    3    |   'new'    |             11  |    6    |   'new'    |
 
 ## Sternbergs.py Randomizor
 
