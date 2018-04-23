@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\user\\venvs\\psychopy\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\user\\venvs\\psychopy\\Scripts\\python.exe",
+    "python.linting.enabled": true
 }

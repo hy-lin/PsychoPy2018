@@ -56,3 +56,5 @@ response = psychopy.event.waitKeys(
     keyList = ['o', 'n']
 )
 print(response)
+
+runTrial(setsize, display_duration, stimuli,  probe, window)

@@ -5,7 +5,6 @@ import psychopy.core
 import psychopy.event
 
 def runTrial(trial_index, trial_info, window):
-    trial_index = trial_index
     trial_beginning_msg = psychopy.visual.TextStim(
         window,
         text = 'Beginning trial {}, good luck.'.format(trial_index)
@@ -62,3 +61,22 @@ trial_info = {
 }
 
 runTrial(1, trial_info, window)
+
+trial_info = {
+    'setsize': 3,
+    'display_duration': 500/1000.0,
+    'stimuli': [
+        'bent',
+        'cart',
+        'line',
+        'birth',
+        u'mögen',
+        'excuse'
+    ],
+    'probe_type': 'new',
+    'serial_position': -1,
+    'probe': 'NEW'
+}
+
+
+runTrial(2, trial_info, window)

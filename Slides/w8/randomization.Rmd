@@ -50,8 +50,8 @@ import numpy.random
 numpy.random.randint(0, 100) # random number ranges from 0-99 with uniform distribution
 numpy.random.randn(1) # return one number from normal distribution
 
-numpy.random.randint(0, 100) > 80 # 80% True (1), 20% False (0)
-numpy.random.choice([0, 1], 1, p = [0.2, 0.8]) # same as previous line
+numpy.random.randint(0, 100) > 80 # 20% True (1), 80% False (0)
+numpy.random.choice([0, 1], 1, p = [0.8, 0.2]) # same as previous line
 
 trial_conditions = range(10)
 numpy.random.shuffle(trial_conditions)

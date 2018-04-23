@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import psychopy.visual
 import psychopy.core
 import psychopy.event
@@ -21,7 +19,7 @@ def getTrialInfo(condition_index, word_list):
     )
 
     trial_info['serial_position'] = numpy.random.randint(trial_info['setsize']) + 1
-    trial_info['stimuli'] = word_candidates[0:(trial_info['setsize']-1)]
+    trial_info['stimuli'] = word_candidates[0:trial_info['setsize']]
     if trial_info['probe_type'] == 'old':
         trial_info['probe'] = trial_info['stimuli'][trial_info['serial_position']-1]
     else:
@@ -69,7 +67,7 @@ def runTrial(trial_index, trial_info, window):
 window = psychopy.visual.Window()
 
 word_list = []
-word_file = codecs.open('C:\\Users\\user\\Documents\\GitHub\\PsychoPy2018\\Codes\\Week8_randomization\\WordList.txt', 'r', encoding='utf-8')
+word_file = codecs.open('WordList.txt', 'r', encoding='utf-8')
 for line in word_file:
     word_list.append(line.rstrip()) # removing '\n' in the end of the line
     
@@ -82,7 +80,18 @@ window.flip()
 
 psychopy.core.wait(1.0)
 
-condition_indexes = range(12)
+# practice trials
+n_practice_trials = 5
+
+for i in range(n_practice_trials):
+    condition_index = numpy.random.randint(0, 12)
+    trial_info = getTrialInfo(condition_index, word_list)
+    runTrial(condition_index, trial_info, window)
+
+# actual experiment trials
+condition_indexes = numpy.arange(48)
+condition_indexes = condition_indexes % 12
+
 numpy.random.shuffle(condition_indexes)
 
 for condition in condition_indexes:
