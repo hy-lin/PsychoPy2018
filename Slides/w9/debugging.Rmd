@@ -83,9 +83,9 @@ found. Creating a temporary one...
 
 ## Error Message
 
-- Python manual page about (error messages)[https://docs.python.org/2.7/tutorial/errors.html]:
+- Python manual page about [error messages](https://docs.python.org/2.7/tutorial/errors.html):
     - Syntax error
-    - (Exceptions)[https://docs.python.org/2.7/library/exceptions.html]
+    - [Exceptions](https://docs.python.org/2.7/library/exceptions.html)
     
 - Syntax error is easy to fix.
     - Fix the line (or the previous line).
@@ -113,9 +113,27 @@ Debug2.py
 IOError: [Errno 2] No such file or directory: 'WordList.txt'
 ```
 
+- This is as literal as it could be.
+- Make sure you have the right pathing.
+
 ## Bugs without Error Messages
 
+- The program works, but it doesn't work the way you intended.
 - Before debugging:
     - Make sure you are using window mode for PsychoPy.
     
+- Try to track to the source of misalignment.
 - Using the debugging tool.
+
+## Bugs You Don't Even Know Exist
+
+- Good luck.
+
+## PsychoPy Related Bugs
+
+- IO error which you don't know it happened.
+    - PsychoPy stucked at creating stimulus.
+    - PsychoPy ate your IO output (e.g., save to data file).
+- Input Buffer
+    - Getting the input from previous responses.
+    - Buffer stopped responding.
