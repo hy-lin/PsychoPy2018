@@ -1,0 +1,118 @@
+---
+title: "Save and User Experience"
+author: "Hsuan-Yu Lin"
+date: "May 7, 2018"
+output:
+  ioslides_presentation:
+    widescreen: true
+    logo: images\logo-large.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, python.reticulate = FALSE)
+```
+
+## Saving file
+
+- What we have on hand:
+```{python}
+trial_info = {
+    'setsize': 6,
+    'display_duration': 500/1000.0,
+    'stimuli': [
+        'bent',
+        'cart',
+        'line',
+        'birth',
+        'ultra',
+        'excuse'
+    ],
+    'probe_type': 'old',
+    'serial_position': 3,
+    'probe': 'line',
+    'response': 1,
+    'RT': 1.732
+}
+```
+
+## Saving file
+
+- I want to record it with coding
+
+```
+1: participant ID
+2: display duration
+3: set size (1-6)
+4: probe type (old, new)
+5: serial position (-1 if probe is new)
+6-11: stimuli
+12: probe
+13: response (1 as old, 2 as new)
+14: RT
+```
+
+```
+1 0.5 6 old 3 bent  cart  line  birth ultra excuse line  1 1.732
+```
+
+## Saving file
+
+- Opening file to write:
+```{python}
+import codecs
+save_file = codecs.open('save_file.txt', 'a', encoding = 'utf-8')
+
+save_file.write(the_string_you_want_to_save)
+```
+
+- 'a' indicates 'appending'
+- 'w' as 'write'
+- 'r' as 'read'
+
+## Saving file
+
+- Creating the [string](https://docs.python.org/2/library/string.html)
+
+```{python}
+output_string = '' # initiate 
+output_string += '{}\t'.format(pID)
+output_string += '{}\t'.format(trial_info['display_duration'])
+output_string += '{}\t'.format(trial_info['setsize'])
+output_string += '{}\t'.format(trial_info['probe_type'])
+output_string += '{}\t'.format(trial_info['serial_position'])
+
+for stimulus in trial_info['stimuli']:
+  output_string += '{}\t'.format(stimulus)
+  
+output_string += '{}\t'.format(trial_infi['probe'])
+output_string += '{}\t'.format(trial_infi['response'])
+output_string += '{}\n'.format(trial_infi['RT'])
+```
+
+## Saving file
+
+```{python}
+def saveTrial(trial_info, save_file):
+  output_string = '' # initiate 
+  output_string += '{}\t'.format(pID)
+  output_string += '{}\t'.format(trial_info['display_duration'])
+  output_string += '{}\t'.format(trial_info['setsize'])
+  output_string += '{}\t'.format(trial_info['probe_type'])
+  output_string += '{}\t'.format(trial_info['serial_position'])
+  
+  for stimulus in trial_info['stimuli']:
+    output_string += '{}\t'.format(stimulus)
+    
+  output_string += '{}\t'.format(trial_infi['probe'])
+  output_string += '{}\t'.format(trial_infi['response'])
+  output_string += '{}\n'.format(trial_infi['RT'])
+  
+  save_file.write(output_string)
+```
+
+## Saving file
+
+- Make sure you close the file.
+```{python}
+save_file.close()
+```
