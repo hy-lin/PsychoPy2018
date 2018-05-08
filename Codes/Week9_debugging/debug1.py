@@ -21,7 +21,7 @@ def getTrialInfo(condition_index, word_list):
     )
 
     trial_info['serial_position'] = numpy.random.randint(trial_info['setsize']) + 1
-    trial_info['stimuli'] = word_candidates[0:trial_info['setsize']-1]
+    trial_info['stimuli'] = word_candidates[0:trial_info['setsize']]
     if trial_info['probe_type'] == 'old':
         trial_info['probe'] = trial_info['stimuli'][trial_info['serial_position']-1]
     else:
@@ -36,6 +36,7 @@ def getTrialInfo(condition_index, word_list):
     return trial_info
 
 def runTrial(trial_index, trial_info, window):
+
     trial_beginning_msg = psychopy.visual.TextStim(
         window,
         text = 'Beginning trial {}, good luck.'.format(trial_index)

@@ -84,11 +84,11 @@ psychopy.core.wait(1.0)
 
 # practice trials
 n_practice_trials = 5
-
+condition_indexes = numpy.random.choice(range(12), n_practice_trials, replace = False)
 for i in range(n_practice_trials):
-    condition_index = numpy.random.randint(0, 12)
+    condition_index = condition_indexes[i]
     trial_info = getTrialInfo(condition_index, word_list)
-    runTrial(condition_index, trial_info, window)
+    runTrial(i+1, trial_info, window)
 
 # actual experiment trials
 condition_indexes = numpy.arange(48)
@@ -96,6 +96,10 @@ condition_indexes = condition_indexes % 12
 
 numpy.random.shuffle(condition_indexes)
 
-for condition in condition_indexes:
+for i, condition in enumerate(condition_indexes):
     trial_info = getTrialInfo(condition, word_list)
-    runTrial(condition, trial_info, window)
+    runTrial(i+1, trial_info, window)
+
+# for i in range(len(condition_indexes)):
+#     trial_info = getTrialInfo(condition_indexes[i], word_list)
+#     runTrial(i+1, trial_info, window)

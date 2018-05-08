@@ -116,3 +116,16 @@ def saveTrial(trial_info, save_file):
 ```{python}
 save_file.close()
 ```
+- Bad things might happen if you do not close it.
+
+## Surprising Exercise
+
+- The saving code is incorrect.
+- If the set size is smaller than 6, the otput_string will contain less columns because the less number of stimuli.
+- FIX IT
+
+## User Experimence
+
+- Give them a break
+    - Performance.
+    - Remaining experiment duration.

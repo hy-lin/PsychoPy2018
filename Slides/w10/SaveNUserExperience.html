@@ -210,7 +210,38 @@ output_string += &#39;{}\n&#39;.format(trial_infi[&#39;RT&#39;])</pre>
   output_string += &#39;{}\t&#39;.format(trial_infi[&#39;response&#39;])
   output_string += &#39;{}\n&#39;.format(trial_infi[&#39;RT&#39;])
   
-  save_file.write(output_string)</pre></article></slide>
+  save_file.write(output_string)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Saving file</h2></hgroup><article  id="saving-file-5">
+
+<ul>
+<li>Make sure you close the file.</li>
+</ul>
+
+<pre class = 'prettyprint lang-python'>save_file.close()</pre>
+
+<ul>
+<li>Bad things might happen if you do not close it.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Surprising Exercise</h2></hgroup><article  id="surprising-exercise">
+
+<ul>
+<li>The saving code is incorrect.</li>
+<li>If the set size is smaller than 6, the otput_string will contain less columns because the less number of stimuli.</li>
+<li>FIX IT</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>User Experimence</h2></hgroup><article  id="user-experimence">
+
+<ul>
+<li>Give them a break
+
+<ul>
+<li>Performance.</li>
+<li>Remaining experiment duration.</li>
+</ul></li>
+</ul></article></slide>
 
 
   <slide class="backdrop"></slide>
