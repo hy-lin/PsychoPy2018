@@ -65,8 +65,32 @@ def runTrial(trial_index, trial_info, window):
 
     return response
 
+def saveTrial(trial_info, save_file, pID):
+    max_setsize = 6
+    
+    output_string = '' # initiate 
+    output_string += '{}\t'.format(pID)
+    output_string += '{}\t'.format(trial_info['display_duration'])
+    output_string += '{}\t'.format(trial_info['setsize'])
+    output_string += '{}\t'.format(trial_info['probe_type'])
+    output_string += '{}\t'.format(trial_info['serial_position'])
+    
+    for stimulus in trial_info['stimuli']:
+        output_string += '{}\t'.format(stimulus)
+
+    for i in range(max_setsize - trial_info['setsize']):
+        output_string += 'xxx\t'
+        
+    output_string += '{}\t'.format(trial_infi['probe'])
+    output_string += '{}\t'.format(trial_infi['response'])
+    output_string += '{}\n'.format(trial_infi['RT'])
+    
+    save_file.write(output_string)
+
 ############ MAIN CODE ############
 window = psychopy.visual.Window()
+
+pID = 1
 
 word_list = []
 word_file = codecs.open('C:\\Users\\user\\Documents\\GitHub\\PsychoPy2018\\Codes\\Week8_randomization\\WordList.txt', 'r', encoding='utf-8')
@@ -74,6 +98,9 @@ for line in word_file:
     word_list.append(line.rstrip()) # removing '\n' in the end of the line
     
 word_file.close()
+
+# open save file
+save_file = codecs.open('save_file.txt', 'a', encoding='utf-8')
 
 # greeting message
 hi = psychopy.visual.TextStim(window, text = 'Welcome to the classic memory experiment.')
@@ -98,4 +125,10 @@ numpy.random.shuffle(condition_indexes)
 
 for i, condition in enumerate(condition_indexes):
     trial_info = getTrialInfo(condition, word_list)
-    runTrial(i+1, trial_info, window)
+    response, RT = runTrial(i+1, trial_info, window)
+    trial_info['response'] = response[0]
+    trial_info['RT'] = RT
+
+    saveTrial(trial_info, save_file, pID)
+
+save_file.close()
