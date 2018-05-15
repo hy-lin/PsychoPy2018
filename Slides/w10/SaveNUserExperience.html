@@ -235,12 +235,106 @@ output_string += &#39;{}\n&#39;.format(trial_infi[&#39;RT&#39;])</pre>
 </article></slide><slide class=""><hgroup><h2>User Experimence</h2></hgroup><article  id="user-experimence">
 
 <ul>
-<li>Give them a break
+<li>User:
 
 <ul>
-<li>Performance.</li>
-<li>Remaining experiment duration.</li>
+<li>Experimenter</li>
+<li>Participant</li>
 </ul></li>
+<li>Experimenter
+
+<ul>
+<li>Escape key</li>
+<li>Auto pilot</li>
+</ul></li>
+<li>Participant
+
+<ul>
+<li>Breaks</li>
+<li>Feedback</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Escape key</h2></hgroup><article  id="escape-key">
+
+<ul>
+<li>Remember the <a href='http://www.psychopy.org/coder/globalKeys.html' title=''>globalKeys</a> event?
+
+<ul>
+<li>Use the Shutdown key</li>
+<li>Write your own function to shut down the program.</li>
+</ul></li>
+</ul>
+
+<pre class = 'prettyprint lang-python'>def endofExperiment(window, save_file):
+    showMessage(&#39;Experiment is over, be sure to grab your cellphone&#39;, window)
+    save_file.close()
+    window.close()
+    sys.exit()
+    
+psychopy.event.globalKeys(key = &#39;d&#39;, func = endofExperiment)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Auto pilot</h2></hgroup><article  id="auto-pilot">
+
+<ul>
+<li>Easier to test the program</li>
+<li>Setup a flag, whenever there is a getKeys function, replace said function to something else</li>
+</ul>
+
+<pre class = 'prettyprint lang-python'>def runTrial(trial_index, trial_info, window, autopilot = False):
+    ...
+    if autopilot:
+        response = [&#39;o&#39;]
+    else:
+        response = psychopy.event.waitKeys(
+            keyList = [&#39;o&#39;, &#39;n&#39;]
+        )</pre>
+
+</article></slide><slide class=""><hgroup><h2>Breaks</h2></hgroup><article  id="breaks">
+
+<ul>
+<li>Please give participants a break.
+
+<ul>
+<li>Especially when the experiment is longer than an hour.</li>
+</ul></li>
+<li>To take a break, you need to track the current trial number</li>
+</ul>
+
+<pre class = 'prettyprint lang-python'>for i, condition in enumerate(condition_indexes):
+    ...</pre>
+
+<ul>
+<li>Check if enough trials are finished. If yes, then take a break.</li>
+</ul>
+
+<pre class = 'prettyprint lang-ptyhon'>    if i % n_trials_per_break == 0:
+        showMessage(&#39;Take a break&#39;)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Feedbacks</h2></hgroup><article  id="feedbacks">
+
+<ul>
+<li>The colorwheel example.</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>ANIMATION</h2></hgroup><article  id="animation">
+
+</article></slide><slide class=""><hgroup><h2>Saving the frames</h2></hgroup><article  id="saving-the-frames">
+
+<ul>
+<li><p>This is the area I had little experince in, so keep it with a grain of salt.</p></li>
+<li>Reduce the number of drawing per frame
+
+<ol>
+<li>Background/foreground strategy.</li>
+<li>&quot;Move&quot; the animated object.</li>
+</ol></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Background/foreground</h2></hgroup><article  id="backgroundforeground">
+
+<ul>
+<li><a href='http://www.psychopy.org/api/visual/bufferimagestim.html#psychopy.visual.BufferImageStim' title=''>BufferImageStim</a></li>
 </ul></article></slide>
 
 
