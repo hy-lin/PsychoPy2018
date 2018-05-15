@@ -126,6 +126,82 @@ save_file.close()
 
 ## User Experimence
 
-- Give them a break
-    - Performance.
-    - Remaining experiment duration.
+- User:
+    - Experimenter
+    - Participant
+
+- Experimenter
+    - Escape key
+    - Auto pilot
+    
+- Participant
+    - Breaks
+    - Feedback
+    
+## Escape key
+
+- Remember the [globalKeys](http://www.psychopy.org/coder/globalKeys.html) event?
+    - Use the Shutdown key
+    - Write your own function to shut down the program.
+    
+```{python}
+def endofExperiment(window, save_file):
+    showMessage('Experiment is over, be sure to grab your cellphone', window)
+    save_file.close()
+    window.close()
+    sys.exit()
+    
+psychopy.event.globalKeys(key = 'd', func = endofExperiment)
+```
+
+## Auto pilot
+
+- Easier to test the program
+- Setup a flag, whenever there is a getKeys function, replace said function to something else
+
+```{python}
+def runTrial(trial_index, trial_info, window, autopilot = False):
+    ...
+    if autopilot:
+        response = ['o']
+    else:
+        response = psychopy.event.waitKeys(
+            keyList = ['o', 'n']
+        )
+```
+
+## Breaks
+
+- Please give participants a break.
+    - Especially when the experiment is longer than an hour.
+    
+- To take a break, you need to track the current trial number
+```{python}
+for i, condition in enumerate(condition_indexes):
+    ...
+```
+
+- Check if enough trials are finished. If yes, then take a break.
+```{ptyhon}
+    if i % n_trials_per_break == 0:
+        showMessage('Take a break')
+```
+
+
+## Feedbacks
+
+- The colorwheel example.
+
+# ANIMATION
+
+## Saving the frames
+
+- This is the area I had little experince in, so keep it with a grain of salt.
+
+- Reduce the number of drawing per frame
+    1. Background/foreground strategy.
+    2. "Move" the animated object.
+    
+## Background/foreground
+
+- [BufferImageStim](http://www.psychopy.org/api/visual/bufferimagestim.html#psychopy.visual.BufferImageStim)

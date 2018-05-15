@@ -1,0 +1,15 @@
+1	0.5	1	new	1	Pfund	xxx	xxx	xxx	xxx	xxx	Ziegel	2	1	0.395859708427
+1	0.5	1	old	1	Bus	xxx	xxx	xxx	xxx	xxx	Bus	2	0	0.805467433878
+1	0.5	1	old	1	Puder	xxx	xxx	xxx	xxx	xxx	Puder	2	0	1.18495473929
+1	0.5	1	new	1	Zange	xxx	xxx	xxx	xxx	xxx	Absatz	2	1	0.425605726312
+1	0.5	1	old	1	Brot	xxx	xxx	xxx	xxx	xxx	Brot	2	0	1.86144481809
+1	0.5	1	new	1	Mantel	xxx	xxx	xxx	xxx	xxx	Nudel	2	1	0.756626452319
+1	0.5	1	old	1	Schale	xxx	xxx	xxx	xxx	xxx	Schale	2	0	0.37251512229
+1	0.5	2	new	2	Zeichen	Traube	xxx	xxx	xxx	xxx	Wiese	2	1	0.430700542754
+1	0.5	2	old	2	Hammer	Pfund	xxx	xxx	xxx	xxx	Pfund	2	0	0.506075000972
+1	0.5	1	new	1	Wolle	xxx	xxx	xxx	xxx	xxx	Butter	2	1	0.888554847334
+1	0.5	1	old	1	Glanz	xxx	xxx	xxx	xxx	xxx	Glanz	2	0	0.501380915288
+1	0.5	1	new	1	Schaufel	xxx	xxx	xxx	xxx	xxx	Akkord	2	1	1.01894056203
+1	0.5	2	new	2	Zahn	Herd	xxx	xxx	xxx	xxx	Umzug	2	1	9.80537907674
+1	0.5	2	old	2	Hemd	Schnee	xxx	xxx	xxx	xxx	Schnee	2	0	3.44730901136
+1	0.5	1	old	1	Dichter	xxx	xxx	xxx	xxx	xxx	Dichter	2	0	0.658123838366

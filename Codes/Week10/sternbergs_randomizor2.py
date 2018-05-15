@@ -5,6 +5,7 @@ import psychopy.core
 import psychopy.event
 import numpy.random
 import codecs
+import sys
 
 def getTrialInfo(condition_index, word_list):
     setsizes = [1, 2, 3, 4, 5, 6]
@@ -35,14 +36,7 @@ def getTrialInfo(condition_index, word_list):
 
     return trial_info
 
-def runTrial(trial_index, trial_info, window):
-    trial_beginning_msg = psychopy.visual.TextStim(
-        window,
-        text = 'Beginning trial {}, good luck.'.format(trial_index)
-    )
-    trial_beginning_msg.draw()
-    window.flip()
-    psychopy.core.wait(1.0)
+def runTrial(trial_index, trial_info, window, autopilot = False):
 
     for i in range(trial_info['setsize']):
         stim = psychopy.visual.TextStim(window, text = trial_info['stimuli'][i])
@@ -60,9 +54,12 @@ def runTrial(trial_index, trial_info, window):
     window.flip()
 
     t0 = psychopy.core.getTime()
-    response = psychopy.event.waitKeys(
-        keyList = ['o', 'n']
-    )
+    if autopilot:
+        response = ['o']
+    else:
+        response = psychopy.event.waitKeys(
+            keyList = ['o', 'n']
+        )
     RT = psychopy.core.getTime() - t0
 
     return response[0] == 'o', RT
@@ -90,10 +87,29 @@ def saveTrial(trial_info, save_file, pID):
     
     save_file.write(output_string)
 
+def showMessage(msg, window):
+    msg_stim = psychopy.visual.TextStim(
+        window,
+        text = msg
+    )
+    msg_stim.draw()
+    window.flip()
+
+    psychopy.event.waitKeys(
+        keyList = ['space']
+    )
+
+def endofExperiment(window, save_file):
+    showMessage('Experiment is over, be sure to grab your cellphone', window)
+    save_file.close()
+    window.close()
+    sys.exit()
+
 ############ MAIN CODE ############
 window = psychopy.visual.Window()
 
 pID = 1
+n_trials_per_break = 2
 
 word_list = []
 word_file = codecs.open('C:\\Users\\user\\Documents\\GitHub\\PsychoPy2018\\Codes\\Week8_randomization\\WordList.txt', 'r', encoding='utf-8')
@@ -105,27 +121,33 @@ word_file.close()
 # open save file
 save_file = codecs.open('save_file.txt', 'a', encoding='utf-8')
 
-# greeting message
-hi = psychopy.visual.TextStim(window, text = 'Welcome to the classic memory experiment.')
-hi.draw()
-window.flip()
+psychopy.event.globalKeys.add(
+    key = 'd',
+    func = endofExperiment,
+    func_args = [window, save_file]
+)
 
-psychopy.core.wait(1.0)
+
+# greeting message
+showMessage('Welcome to the classic memory experiment.', window)
 
 # practice trials
 n_practice_trials = 2
 condition_indexes = numpy.random.choice(range(12), n_practice_trials, replace = False)
+
+showMessage('Begin practice trials.', window)
 for i in range(n_practice_trials):
     condition_index = condition_indexes[i]
     trial_info = getTrialInfo(condition_index, word_list)
     runTrial(i+1, trial_info, window)
 
 # actual experiment trials
-condition_indexes = numpy.arange(2)
+condition_indexes = numpy.arange(4)
 condition_indexes = condition_indexes % 12
 
 numpy.random.shuffle(condition_indexes)
 
+showMessage('Begin experiment trials.', window)
 for i, condition in enumerate(condition_indexes):
     trial_info = getTrialInfo(condition, word_list)
     response, RT = runTrial(i+1, trial_info, window)
@@ -145,4 +167,7 @@ for i, condition in enumerate(condition_indexes):
 
     saveTrial(trial_info, save_file, pID)
 
-save_file.close()
+    if i % n_trials_per_break == 0:
+        showMessage('Take a break', window)
+
+endofExperiment(window, save_file)
