@@ -58,8 +58,12 @@ def runTrial(trial_index, trial_info, window, autopilot = False):
         response = ['o']
     else:
         response = psychopy.event.waitKeys(
-            keyList = ['o', 'n']
+            keyList = ['o', 'n', 'd']
         )
+
+        if response[0] == 'd':
+            endofExperiment(window, None)
+
     RT = psychopy.core.getTime() - t0
 
     return response[0] == 'o', RT
@@ -67,7 +71,7 @@ def runTrial(trial_index, trial_info, window, autopilot = False):
 def saveTrial(trial_info, save_file, pID):
     max_setsize = 6
 
-    output_string = '' # initiate 
+    output_string = u'' # initiate 
     output_string += '{}\t'.format(pID)
     output_string += '{}\t'.format(trial_info['display_duration'])
     output_string += '{}\t'.format(trial_info['setsize'])
@@ -75,19 +79,19 @@ def saveTrial(trial_info, save_file, pID):
     output_string += '{}\t'.format(trial_info['serial_position'])
     
     for stimulus in trial_info['stimuli']:
-        output_string += '{}\t'.format(stimulus)
+        output_string += u'{}\t'.format(stimulus)
 
     for i in range(max_setsize - trial_info['setsize']):
         output_string += 'xxx\t'
         
-    output_string += '{}\t'.format(trial_info['probe'])
+    output_string += u'{}\t'.format(trial_info['probe'])
     output_string += '{}\t'.format(trial_info['response'])
     output_string += '{}\t'.format(trial_info['correctness'])
     output_string += '{}\n'.format(trial_info['RT'])
     
     save_file.write(output_string)
 
-def showMessage(msg, window):
+def showMessage(msg, window, autopilot = False):
     msg_stim = psychopy.visual.TextStim(
         window,
         text = msg
@@ -95,9 +99,10 @@ def showMessage(msg, window):
     msg_stim.draw()
     window.flip()
 
-    psychopy.event.waitKeys(
-        keyList = ['space']
-    )
+    if autopilot != True:
+        psychopy.event.waitKeys(
+            keyList = ['space']
+        )
 
 def endofExperiment(window, save_file):
     showMessage('Experiment is over, be sure to grab your cellphone', window)
@@ -127,30 +132,32 @@ psychopy.event.globalKeys.add(
     func_args = [window, save_file]
 )
 
+autopilot = False
 
 # greeting message
-showMessage('Welcome to the classic memory experiment.', window)
+showMessage('Welcome to the classic memory experiment.', window, autopilot=autopilot)
 
 # practice trials
-n_practice_trials = 2
+n_practice_trials = 0
 condition_indexes = numpy.random.choice(range(12), n_practice_trials, replace = False)
 
-showMessage('Begin practice trials.', window)
+showMessage('Begin practice trials.', window, autopilot)
 for i in range(n_practice_trials):
     condition_index = condition_indexes[i]
     trial_info = getTrialInfo(condition_index, word_list)
-    runTrial(i+1, trial_info, window)
+    runTrial(i+1, trial_info, window, autopilot)
 
 # actual experiment trials
-condition_indexes = numpy.arange(4)
+n_trials = 4
+condition_indexes = numpy.arange(n_trials)
 condition_indexes = condition_indexes % 12
 
 numpy.random.shuffle(condition_indexes)
 
-showMessage('Begin experiment trials.', window)
+showMessage('Begin experiment trials.', window, autopilot)
 for i, condition in enumerate(condition_indexes):
     trial_info = getTrialInfo(condition, word_list)
-    response, RT = runTrial(i+1, trial_info, window)
+    response, RT = runTrial(i+1, trial_info, window, autopilot)
     trial_info['response'] = int(response) + 1
     trial_info['RT'] = RT
 
@@ -167,7 +174,7 @@ for i, condition in enumerate(condition_indexes):
 
     saveTrial(trial_info, save_file, pID)
 
-    if i % n_trials_per_break == 0:
-        showMessage('Take a break', window)
+    if (i+1) % n_trials_per_break == 0 and (i+1) != n_trials:
+        showMessage('Take a break, {}% of the experiment had been done'.format((i+1.0)/n_trials*100), window)
 
 endofExperiment(window, save_file)

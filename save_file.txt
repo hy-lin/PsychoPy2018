@@ -13,3 +13,11 @@
 1	0.5	2	new	2	Zahn	Herd	xxx	xxx	xxx	xxx	Umzug	2	1	9.80537907674
 1	0.5	2	old	2	Hemd	Schnee	xxx	xxx	xxx	xxx	Schnee	2	0	3.44730901136
 1	0.5	1	old	1	Dichter	xxx	xxx	xxx	xxx	xxx	Dichter	2	0	0.658123838366
+1	0.5	2	old	2	Fisch	Marsch	xxx	xxx	xxx	xxx	Marsch	2	0	1.19758142789
+1	0.5	1	old	1	Traktor	xxx	xxx	xxx	xxx	xxx	Traktor	2	0	2.3577744567
+1	0.5	1	new	1	Wimpel	xxx	xxx	xxx	xxx	xxx	Fall	2	1	1.09528633246
+1	0.5	2	new	2	Stolz	Zeichen	xxx	xxx	xxx	xxx	Dreieck	2	1	2.34347579487
+1	0.5	2	old	2	Insel	Kloster	xxx	xxx	xxx	xxx	Kloster	2	0	1.03304774982
+1	0.5	2	new	1	Weisheit	Reifen	xxx	xxx	xxx	xxx	Zange	2	1	0.533286715345
+1	0.5	1	new	1	Herd	xxx	xxx	xxx	xxx	xxx	Schuh	2	1	1.24309153116
+1	0.5	1	old	1	Auge	xxx	xxx	xxx	xxx	xxx	Auge	2	0	1.21564195601

@@ -132,7 +132,7 @@ for i, condition in enumerate(condition_indexes):
     trial_info['response'] = int(response) + 1
     trial_info['RT'] = RT
 
-    if trial_info['response'] == 1:
+    if trial_info['response'] == 2:
         if trial_info['probe_type'] == 'old':
             trial_info['correctness'] = 1
         else:

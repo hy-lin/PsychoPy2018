@@ -1,0 +1,42 @@
+---
+title: "Sound"
+author: "Hsuan-Yu Lin"
+date: "May 21, 2018"
+output:
+  ioslides_presentation:
+    widescreen: true
+    logo: images\logo-large.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, python.reticulate = FALSE)
+```
+
+## Sound
+
+- In the typical PsychoPy fasion, check the [manual](http://www.psychopy.org/api/sound.html) first.
+    - Totally helpful. Truely
+    
+- But if you google, you will find out
+    1. Sound manual is broken.
+    2. https://discourse.psychopy.org/t/how-do-you-play-an-audio-file/2842/2
+    
+- The real [manual](https://github.com/psychopy/psychopy/blob/master/psychopy/sound/__init__.py)
+
+## Sound
+
+- The [real real manual](https://github.com/psychopy/psychopy/blob/master/psychopy/demos/coder/stimuli/soundStimuli.py)
+
+## Sound
+
+- Two "bugs" I encountered:
+    - Stereo sometimes is not defined: manually set it to False or True.
+    - Bitrate incompatible: ensure all the sound files have the same bitrate.
+    
+## Recording
+
+- [Manual of Microphone](http://www.psychopy.org/api/microphone.html) 
+    - AudioCapture page is missing.
+    - [Here we go again.](https://github.com/psychopy/psychopy/blob/master/psychopy/microphone.py)
+    
+- However: I can't make pyo works.
